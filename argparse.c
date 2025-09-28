@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #define OPT_UNSET 1
 #define OPT_LONG (1 << 1)
 
@@ -258,7 +257,8 @@ int argparse_parse(struct argparse *self, int argc, const char **argv) {
     fprintf(stderr, "error: unknown option `%s`\n", self->argv[0]);
     argparse_usage(self);
     if (!(self->flags & ARGPARSE_IGNORE_UNKNOWN_ARGS)) {
-      exit(EXIT_FAILURE);
+      return -1;
+      // exit(EXIT_FAILURE);
     }
   }
 
